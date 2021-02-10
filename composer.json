@@ -1,0 +1,37 @@
+{
+    "name": "maurisource/mageship",
+    "description": "MageShip.io Cloud Shipping Rates from ShipStation as Shipping/Delivery Method in Magento 2.",
+    "keywords": [
+        "shipstation",
+        "shipping method",
+        "delivery method",
+        "api"
+    ],
+    "homepage": "https://mageship.io/",
+    "authors": [
+        {
+            "name": "Maurisource & in-house contributors",
+            "homepage": "https://maurisource.com/"
+        }
+    ],
+    "require": {
+        "php": "~5.6.0|~7.0.0|~7.1.0|~7.2.0|~7.3.0|~7.4.0",
+        "magento/module-shipping": "100.2.*|100.3.*|100.4.*"
+    },
+    "suggest": {
+
+    },
+    "type": "magento2-module",
+    "version": "0.2.1",
+    "license": [
+
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Maurisource\\MageShip\\": ""
+        }
+    }
+}
