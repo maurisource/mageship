@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <carriers>
+            <mageship>
+                <active>1</active>
+                <sallowspecific>0</sallowspecific>
+                <model>Maurisource\MageShip\Model\Carrier</model>
+                <name>Maurisource MageShip</name>
+                <price>0.00</price>
+                <title></title>
+                <type>I</type>
+                <specificerrmsg>This shipping method is not available.</specificerrmsg>
+                <unit>ounce</unit>
+                <failover>1</failover>
+                <handling_type>F</handling_type>
+                <handling_fee>0</handling_fee>
+            </mageship>
+        </carriers>
+    </default>
+</config>

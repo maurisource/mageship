@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Maurisource_MageShip::rates" title="MageShip Rates" translate="title" module="Maurisource_MageShip" sortOrder="100" parent="Magento_Backend::other_settings" action="mageship" resource="Maurisource_MageShip::rates"/>
+    </menu>
+</config>
