@@ -7,16 +7,50 @@ use Magento\Framework\App\Helper\Context;
 use Maurisource\MageShip\Model\Cache\Type\MageShip as CacheType;
 use Magento\Framework\Module\ModuleListInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\HTTP\Client\Curl;
 
 class Webservice extends AbstractHelper
 {
+    /**
+     * @var Curl
+     */
     private $curl;
+
+    /**
+     * @var CacheType
+     */
     private $cache;
+
+    /**
+     * @var
+     */
     private $carriers;
+
+    /**
+     * @var
+     */
     private $urlApi;
+
+    /**
+     * @var ModuleListInterface
+     */
     private $moduleList;
+
+    /**
+     * @var StoreManagerInterface
+     */
     private $storeManager;
+
+    /**
+     * @var
+     */
     private $lastErrorMessage;
+
+    /**
+     * @var Json
+     */
+    public $jsonSerialize;
 
     const CACHE_KEY = 'mageship_cache_key';
     const CACHE_URL_KEY = 'mageship_url_cache_key';
@@ -24,15 +58,17 @@ class Webservice extends AbstractHelper
 
     public function __construct(
         Context $context,
-        \Magento\Framework\HTTP\Client\Curl $curl,
+        Curl $curl,
         ModuleListInterface $moduleList,
         StoreManagerInterface $storeManager,
-        CacheType $cache
+        CacheType $cache,
+        Json $jsonSerialize
     ) {
         $this->curl = $curl;
         $this->cache = $cache;
         $this->moduleList = $moduleList;
         $this->storeManager = $storeManager;
+        $this->jsonSerialize = $jsonSerialize;
         parent::__construct($context);
     }
 
@@ -102,8 +138,11 @@ class Webservice extends AbstractHelper
     public function getAllowedCarriers()
     {
         $carriers = $this->scopeConfig->getValue('shipping/mageship/carriers');
-        $carrierIds = explode(',', $carriers);
-
+        if ($carriers) {
+            $carrierIds = explode(',', $carriers);
+        } else {
+            $carrierIds = [];
+        }
         return $carrierIds;
     }
 
@@ -131,7 +170,7 @@ class Webservice extends AbstractHelper
 
     private function getApiRemoteUrl($apiKey)
     {
-        $mageShipApiUrl = 'https://auth.mageship.io/api/mage';
+        $mageShipApiUrl = 'http://mageship.io/rest/all/V1/authmageship/api/mage';
         $postParameters = [
             'client_store_url' => $this->getStoreUrl(),
             'client_module_version' => $this->getVersion()
@@ -147,9 +186,9 @@ class Webservice extends AbstractHelper
         $this->lastErrorMessage = '';
 
         if ($response) {
-            $responseArray = json_decode($response, true);
-
-            if ($responseArray) {
+            $responseArray = $this->jsonSerialize->unserialize($response);
+            if ($responseArray && isset($responseArray[0])) {
+                $responseArray = $responseArray[0];
                 if (isset($responseArray['url'])) {
                     $url = $responseArray['url'];
                 } elseif (isset($responseArray['message'])) {
