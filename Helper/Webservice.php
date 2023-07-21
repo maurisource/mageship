@@ -170,7 +170,7 @@ class Webservice extends AbstractHelper
 
     private function getApiRemoteUrl($apiKey)
     {
-        $mageShipApiUrl = 'http://mageship.io/rest/all/V1/authmageship/api/mage';
+        $mageShipApiUrl = 'https://mageship.io/rest/all/V1/authmageship/api/mage';
         $postParameters = [
             'client_store_url' => $this->getStoreUrl(),
             'client_module_version' => $this->getVersion()
