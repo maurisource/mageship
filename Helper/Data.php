@@ -29,7 +29,7 @@ class Data extends AbstractHelper
      */
     public function getHandlingFeeValue($shippingValue)
     {
-        $fee = $this->scopeConfig->getValue(self::PATH_TYPE, 'websites');
+        $fee = $this->scopeConfig->getValue(self::PATH_FEE, 'websites');
 
         if ($fee <= 0) {
             return 0;

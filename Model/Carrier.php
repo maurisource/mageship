@@ -204,11 +204,16 @@ class Carrier extends AbstractCarrier implements CarrierInterface
 
     private function isMethodAllowed($method)
     {
-        if ($this->allowedMethods === null) {
-            $this->allowedMethods = explode(',', $this->_scopeConfig->getValue('shipping/mageship/allowed_methods'));
+        $allowedMethods = $this->_scopeConfig->getValue('shipping/mageship/allowed_methods');
+
+        if ($allowedMethods) {
+            if ($this->allowedMethods === null) {
+                $this->allowedMethods = explode(',', $allowedMethods);
+            }
+            return in_array($method, $this->allowedMethods);
         }
 
-        return in_array($method, $this->allowedMethods);
+        return false;
     }
 
     private function getAmount($estimate)
