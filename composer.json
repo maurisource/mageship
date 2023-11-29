@@ -16,13 +16,13 @@
     ],
     "require": {
         "php": "~7.1||~7.2||~7.3||~7.4||~8.0||~8.1||~8.2",
-        "magento/module-shipping": "*"
+        "magento/module-shipping": "^100.3"
     },
     "suggest": {
 
     },
     "type": "magento2-module",
-    "version": "0.2.1",
+    "version": "0.2.4",
     "license": [
 
     ],
