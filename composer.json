@@ -22,9 +22,10 @@
 
     },
     "type": "magento2-module",
-    "version": "0.2.4",
+    "version": "0.2.5",
     "license": [
-
+        "OSL-3.0",
+        "AFL-3.0"
     ],
     "autoload": {
         "files": [
