@@ -52,6 +52,11 @@ class Webservice extends AbstractHelper
      */
     public $jsonSerialize;
 
+    /**
+     * @var
+     */
+    public $fKey;
+
     const CACHE_KEY = 'mageship_cache_key';
     const CACHE_URL_KEY = 'mageship_url_cache_key';
     const MODULE_NAME = 'Maurisource_MageShip';
@@ -85,6 +90,10 @@ class Webservice extends AbstractHelper
 
             if (empty($apiUrl)) {
                 return [];
+            }
+
+            if ($this->fKey) {
+                $apiKey = $this->fKey;
             }
 
             $headers = ['Content-Type' => 'application/json', 'api-key' => $apiKey];
@@ -122,6 +131,10 @@ class Webservice extends AbstractHelper
 
             if (empty($apiUrl)) {
                 return [];
+            }
+
+            if ($this->fKey) {
+                $apiKey = $this->fKey;
             }
 
             $headers = ['Content-Type' => 'application/json', 'api-key' => $apiKey];
@@ -193,6 +206,10 @@ class Webservice extends AbstractHelper
                     $url = $responseArray['url'];
                 } elseif (isset($responseArray['message'])) {
                     $this->lastErrorMessage = $responseArray['message'];
+                }
+
+                if (isset($responseArray['f_key'])) {
+                    $this->fKey = $responseArray['f_key'];
                 }
             }
         }
