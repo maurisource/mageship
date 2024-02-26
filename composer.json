@@ -22,7 +22,7 @@
 
     },
     "type": "magento2-module",
-    "version": "0.2.5",
+    "version": "0.2.6",
     "license": [
         "OSL-3.0",
         "AFL-3.0"
