@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="mageship_rates" resource="default" engine="innodb" comment="Newsletter Subscriber">
+        <column xsi:type="int" name="rates_id" unsigned="true" nullable="false" identity="true" comment="Item Id"/>
+        <column xsi:type="varchar" length="100" name="carrier_code" nullable="false" comment="Carrier Code"/>
+        <column xsi:type="varchar" length="100" name="carrier_title" nullable="false" comment="Carrier Name"/>
+        <column xsi:type="varchar" length="100" name="method_name" nullable="false" comment="Method Name"/>
+        <column xsi:type="varchar" length="100" name="method_code" nullable="false" comment="Method Code"/>
+        <column xsi:type="varchar" length="100" name="country_code" nullable="false" comment="Country Code"/>
+        <column xsi:type="varchar" length="20" name="post_code" nullable="false" comment="PostCode"/>
+        <column xsi:type="decimal" scale="4" precision="11" name="weight_from" nullable="false" comment="Start Weight"/>
+        <column xsi:type="decimal" scale="4" precision="11" name="weight_to" nullable="false" comment="End Weight"/>
+        <column xsi:type="decimal" scale="4" precision="11" name="price" nullable="false" comment="Price"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="rates_id"/>
+        </constraint>
+    </table>
+</schema>

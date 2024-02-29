@@ -1,0 +1,19 @@
+{
+    "mageship_rates": {
+        "column": {
+            "rates_id": true,
+            "carrier_code": true,
+            "carrier_title": true,
+            "method_name": true,
+            "method_code": true,
+            "country_code": true,
+            "post_code": true,
+            "weight_from": true,
+            "weight_to": true,
+            "price": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
